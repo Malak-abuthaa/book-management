@@ -1,8 +1,28 @@
+require('dotenv').config()
 const express = require('express')
 const app = express()
+const mongoose = require("mongoose")
+
 
 // where the app listen port
 app.listen(3000)
+app.use(express.json())
+
+// DB connections 
+const connectDB = async () => {
+    try {
+        await mongoose.connect(process.env.DATABASE_URL, {useNewUrlParser: true});
+        mongoose.connection.once('open', function(){
+        console.log('Conection has been made!');
+            })
+
+    } catch (err) {
+        console.log('Failed to connect to MongoDB', err);
+    }
+};
+
+connectDB();
+
 
 // get
 app.get("/", (req, res)=>{
