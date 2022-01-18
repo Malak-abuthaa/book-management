@@ -1,7 +1,11 @@
 require('dotenv').config()
+const cors = require('cors')
 const express = require('express')
 const app = express()
 const mongoose = require("mongoose")
+
+//allow cros only for testing 
+app.use(cors())
 
 
 // where the app listen port

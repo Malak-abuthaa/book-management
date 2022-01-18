@@ -17,9 +17,9 @@ const bookSchema = new mongoose.Schema({
     unique: true
   },
   auther_id:{
-      type: String,
+      type: mongoose.Schema.ObjectId,
       require: true,
-      ref :'authorSchema'
+      ref :'authors'
 
 },
   Create_on: {

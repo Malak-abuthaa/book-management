@@ -6,7 +6,7 @@ const books = require('../models/books')
 // * **GET /books/** - Returns a list of books in the database in JSON format
 router.get('/books', async(req, res)=>{
     try{
-        const list_of_books = await books.find()
+        const list_of_books = await books.find().populate('auther_id')
         res.json(list_of_books)
     }
     catch(error){

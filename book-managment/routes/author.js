@@ -27,6 +27,7 @@ router.get('/author/:id', getAuthor, (req, res)=>{
 // * **PUT /author/{{id}}** - Updates an existing author - Expects a JSON body
 router.put("/author/:id",  getAuthor, async(req, res)=>{
     try{
+        console.log
         await authors.findByIdAndUpdate({_id:req.params.id}, req.body)        
         res.status(201).json(await authors.findById(req.params.id))  
     }
